@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-export const useCounter = (initialValue) => {
+export const useCounter = (initialValue = 10) => {
   const [counter, setCounter] = useState(initialValue);
 
-  const handleSuma = () => {
-    setCounter(counter + 1);
+  const handleSuma = (value = 1) => {
+    setCounter((current) => counter + value);
   };
-  const handleResta = () => {
-    if (counter > 1) setCounter(counter - 1);
+  const handleResta = (value = 1) => {
+    if (counter > 1) setCounter((current) => counter - value);
   };
 
   const handleReset = () => {

@@ -17,7 +17,11 @@ export const MultipleCustomHooks = () => {
 
       {isLoading ? <LoadingQuote /> : <Quote author={author} quote={quote} />}
 
-      <button className="btn btn-primary" onClick={handleSuma}>
+      <button
+        className="btn btn-primary"
+        onClick={handleSuma}
+        disabled={isLoading}
+      >
         next quote
       </button>
 
