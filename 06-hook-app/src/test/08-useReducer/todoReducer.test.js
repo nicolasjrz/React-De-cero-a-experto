@@ -27,5 +27,26 @@ describe("Pruebas en todoReducer", () => {
 
     const newState = todoReducer(initialState, action);
     expect(newState.length).toBe(2);
+    expect(newState).toContain(action.payload);
+  });
+
+  test("debe eliminar un todo", () => {
+    const action = {
+      type: "remove",
+      payload: 2,
+    };
+
+    const newState = todoReducer(initialState, action);
+    expect(newState.length).toBe(1);
+  });
+
+  test("debe de realizar el toggle del todo", () => {
+    const action = {
+      type: "toggleTodo",
+      payload: 1,
+    };
+
+    const newState = todoReducer(initialState, action);
+    expect(newState[0].done).toBe(true);
   });
 });

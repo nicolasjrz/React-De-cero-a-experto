@@ -11,6 +11,7 @@ export const TodoItem = ({
     <>
       <li key={id} className="list-group-item d-flex justify-content-between">
         <span
+          aria-label="span"
           className={`align-self-center ${
             done ? "text-decoration-line-through" : ""
           }`}
