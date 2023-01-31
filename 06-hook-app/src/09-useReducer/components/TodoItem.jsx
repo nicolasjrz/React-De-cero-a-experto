@@ -19,7 +19,11 @@ export const TodoItem = ({
         >
           {desciption}
         </span>{" "}
-        <button className="btn btn-danger " onClick={() => onDeleteTodo(id)}>
+        <button
+          aria-label="button"
+          className="btn btn-danger "
+          onClick={() => onDeleteTodo(id)}
+        >
           X
         </button>
       </li>

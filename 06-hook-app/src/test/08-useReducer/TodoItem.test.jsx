@@ -74,7 +74,6 @@ describe("pruebas en el componente todo item", () => {
     );
 
     const buttonElement = screen.getByRole("button");
-    console.log(buttonElement);
     fireEvent.click(buttonElement);
     expect(onDeleteTodoMock).toHaveBeenCalledWith(todo.id);
   });
