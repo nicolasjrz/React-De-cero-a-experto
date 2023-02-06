@@ -12,10 +12,10 @@ export const HeroCard = ({ heroe }) => {
   const heroImgUrl = `/assets/heroes/${id}.jpg`;
 
   return (
-    <div className="col">
+    <div className="col animate__animated animate__bounceInDown">
       <div className="card">
         <div className="row no-gutters">
-          <div className="col-4">
+          <div className="col-4 ">
             <img className="card-img" src={heroImgUrl} alt={superhero} />
           </div>
           <div className="col-8">
