@@ -4,7 +4,6 @@ import { useForm } from "../../hooks/useForm";
 import queryString from "query-string";
 import { getSearchHero } from "../helpers/getSearchHero";
 import { HeroCard } from "../components";
-import { queries } from "@testing-library/react";
 export const SearchPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -63,6 +62,7 @@ export const SearchPage = () => {
             search a hero
           </div>
           <div
+            aria-label="alert-hero"
             className="alert alert-danger animate__animated animate__flipInX"
             style={{ display: showError ? "" : "none" }}
           >

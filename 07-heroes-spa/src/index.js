@@ -3,13 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { HeroesApp } from "./HeroesApp";
 import "animate.css";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  BrowserRouter,
-} from "react-router-dom";
-import { AppRouter } from "./router/AppRouter";
+import { BrowserRouter } from "react-router-dom";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

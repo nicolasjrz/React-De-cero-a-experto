@@ -8,15 +8,16 @@ export const HeroesRoutes = () => {
   return (
     <>
       <Navbar />
+
       <div className="container">
         <Routes>
-          <Route path="marvel" element={<MarvelPages />}></Route>
-          <Route path="dc" element={<DcPages />}></Route>
+          <Route path="marvel" element={<MarvelPages />} />
+          <Route path="dc" element={<DcPages />} />
 
-          <Route path="search" element={<SearchPage />}></Route>
-          <Route path="hero/:id" element={<HeroPage />}></Route>
+          <Route path="search" element={<SearchPage />} />
+          <Route path="hero/:id" element={<HeroPage />} />
 
-          <Route path="/" element={<Navigate to="/marvel" />}></Route>
+          <Route path="/" element={<Navigate to="/marvel" />} />
         </Routes>
       </div>
     </>
