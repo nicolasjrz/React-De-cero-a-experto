@@ -16,7 +16,6 @@ export const LoginPage = () => {
   const { status } = useSelector((state) => state.auth);
   const isAuthenticating = useMemo(() => status === "checking", [status]);
 
-  console.log(isAuthenticating);
   const { email, password, onInputChange } = useForm({
     email: "nico@gmail.com",
     password: "123456",

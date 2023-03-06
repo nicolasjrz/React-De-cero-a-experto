@@ -1,12 +1,27 @@
 import { Button, Grid, Link, TextField, Typography } from "@mui/material";
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { useForm } from "../../hooks/useForm";
 import { AuthLayout } from "../layout/AuthLayout";
 
+const dataFrom = {
+  email: "nico@gmail.com",
+  password: "123456",
+  displayName: "Nicolas",
+};
+
 export const SignupPage = () => {
+  const { displayName, email, password, onInputChange, formState } =
+    useForm(dataFrom);
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    console.log(formState);
+  };
+
   return (
     <AuthLayout title="Signup">
-      <form action="" method="get">
+      <form onSubmit={onSubmit} method="get">
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
@@ -14,6 +29,9 @@ export const SignupPage = () => {
               type="text"
               placeholder="John Doe"
               fullWidth
+              name="displayName"
+              value={displayName}
+              onClick={onInputChange}
             />
           </Grid>
 
@@ -23,6 +41,9 @@ export const SignupPage = () => {
               type="email"
               placeholder="correo@google.com"
               fullWidth
+              name="email"
+              value={email}
+              onClick={onInputChange}
             />
           </Grid>
 
@@ -32,12 +53,15 @@ export const SignupPage = () => {
               type="password"
               placeholder="Insert password"
               fullWidth
+              name="password"
+              value={password}
+              onClick={onInputChange}
             />
           </Grid>
 
           <Grid container spacing={2} sx={{ md: 2, mt: 1 }}>
             <Grid item xs={12}>
-              <Button variant="contained" fullWidth>
+              <Button type="submit" variant="contained" fullWidth>
                 Create Account
               </Button>
             </Grid>
