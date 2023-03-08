@@ -1,8 +1,24 @@
 import { LogoutOutlined, MenuOutlined } from "@mui/icons-material";
-import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Button,
+  Grid,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/auth/authSlice";
 
 export const Navbar = ({ drawerWidth }) => {
+  const { status } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  const onLogout = () => {
+    dispatch(logout(status));
+  };
+
   return (
     <AppBar
       position="fixed"
@@ -29,7 +45,7 @@ export const Navbar = ({ drawerWidth }) => {
           <Typography variant="h6" noWrap component="div">
             Journal App
           </Typography>
-          <IconButton color="error">
+          <IconButton onClick={onLogout} color="error">
             <LogoutOutlined />
           </IconButton>
         </Grid>
