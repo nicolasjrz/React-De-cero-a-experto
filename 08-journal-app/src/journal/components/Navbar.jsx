@@ -1,12 +1,5 @@
 import { LogoutOutlined, MenuOutlined } from "@mui/icons-material";
-import {
-  AppBar,
-  Button,
-  Grid,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { startLogout } from "../../store/auth/thunks";
