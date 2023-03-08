@@ -129,7 +129,7 @@ export const SignupPage = () => {
             <Link
               component={RouterLink}
               color="inherit"
-              to="/auth/signup"
+              to="/auth/login"
               sx={{ ml: 1 }}
             >
               Login
