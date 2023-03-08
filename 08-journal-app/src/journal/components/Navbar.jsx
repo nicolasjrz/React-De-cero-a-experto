@@ -8,15 +8,14 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../store/auth/authSlice";
+import { useDispatch } from "react-redux";
+import { startLogout } from "../../store/auth/thunks";
 
 export const Navbar = ({ drawerWidth }) => {
-  const { status } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const onLogout = () => {
-    dispatch(logout(status));
+    dispatch(startLogout());
   };
 
   return (

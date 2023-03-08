@@ -13,8 +13,10 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { FirebaseAuth } from "../../firebase/config";
 
 export const SideBar = ({ drawerWidth }) => {
+  const { displayName } = FirebaseAuth.currentUser;
   return (
     <Box
       component="nav"
@@ -30,7 +32,7 @@ export const SideBar = ({ drawerWidth }) => {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Nicolas Juarez
+            {displayName}
           </Typography>
         </Toolbar>
         <Divider />
