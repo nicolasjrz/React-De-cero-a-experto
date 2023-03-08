@@ -7,7 +7,6 @@ import {
   signInWithPopup,
   updateProfile,
 } from "firebase/auth";
-import { async } from "@firebase/util";
 
 const GoogleProvider = new GoogleAuthProvider();
 
@@ -26,7 +25,7 @@ export const singInWithGoogle = async () => {
       uid,
     };
   } catch (error) {
-    const errorCode = error.code;
+    ///const errorCode = error.code;
     const errorMessage = error.message;
 
     return {

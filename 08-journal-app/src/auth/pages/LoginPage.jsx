@@ -12,7 +12,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import {
-  checkingAuthentication,
   startGoogleSignIn,
   startLoginWithEmailPassword,
 } from "../../store/auth/thunks";
