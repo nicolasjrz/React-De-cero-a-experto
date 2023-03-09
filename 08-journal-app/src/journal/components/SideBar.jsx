@@ -1,4 +1,3 @@
-import { TurnedInNot } from "@mui/icons-material";
 import { Divider, Drawer, List, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
