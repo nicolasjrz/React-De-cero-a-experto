@@ -1,22 +1,14 @@
 import { TurnedInNot } from "@mui/icons-material";
-import {
-  Divider,
-  Drawer,
-  Grid,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { Divider, Drawer, List, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { useSelector } from "react-redux";
 import { FirebaseAuth } from "../../firebase/config";
+import { SideBarItem } from "./SideBarItem";
 
 export const SideBar = ({ drawerWidth }) => {
   const { displayName } = FirebaseAuth.currentUser;
+  const { notes } = useSelector((state) => state.journal);
   return (
     <Box
       component="nav"
@@ -37,22 +29,8 @@ export const SideBar = ({ drawerWidth }) => {
         </Toolbar>
         <Divider />
         <List>
-          {["enero", "febrero", "abril"].map((text) => (
-            <ListItem key={text}>
-              <ListItemButton>
-                <ListItemIcon>
-                  <TurnedInNot />
-                </ListItemIcon>
-                <Grid container>
-                  <ListItemText primary={text} />
-                  <ListItemText
-                    secondary={
-                      "Fugiat adipisicing elit duis labore sint duis consectetur eu veniam commodo nisi culpa."
-                    }
-                  />
-                </Grid>
-              </ListItemButton>
-            </ListItem>
+          {notes.map((note) => (
+            <SideBarItem key={note.id} {...note} />
           ))}
         </List>
       </Drawer>
