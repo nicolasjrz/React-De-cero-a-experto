@@ -15,7 +15,7 @@ export const startNewNote = () => {
     const newNote = {
       title: "",
       body: "",
-      date: new Date().getDate(),
+      date: new Date(),
     };
 
     const newDoc = doc(collection(FirebaseDB, `${auth.uid}/journal/notes`));
@@ -34,7 +34,6 @@ export const startNewNote = () => {
 
 export const startLoadingNote = () => {
   return async (dispatch, getState) => {
-    dispatch(savingNewNote());
     const { uid } = getState().auth;
     if (!uid) throw new Error("uid in user not found");
     const notes = await loadNotes(uid);
