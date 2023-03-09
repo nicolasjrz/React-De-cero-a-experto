@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import { collection, doc, setDoc } from "firebase/firestore/lite";
 import { FirebaseDB } from "../../firebase/config";
 import { loadNotes } from "../../helpers/loadNotes";
@@ -15,7 +16,7 @@ export const startNewNote = () => {
     const newNote = {
       title: "",
       body: "",
-      date: new Date(),
+      date: new Date().getDate(),
     };
 
     const newDoc = doc(collection(FirebaseDB, `${auth.uid}/journal/notes`));
@@ -38,5 +39,19 @@ export const startLoadingNote = () => {
     if (!uid) throw new Error("uid in user not found");
     const notes = await loadNotes(uid);
     dispatch(setNote(notes));
+  };
+};
+
+export const startSaveNote = () => {
+  return async (dispatch, getState) => {
+    const { uid } = getState().auth;
+    const { active: note } = getState().journal;
+    const noteToFireStore = { ...note };
+
+    delete noteToFireStore.id;
+
+    const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`);
+
+    await setDoc(docRef, noteToFireStore, { merge: true });
   };
 };
