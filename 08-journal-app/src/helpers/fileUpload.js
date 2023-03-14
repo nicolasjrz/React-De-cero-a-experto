@@ -1,5 +1,7 @@
 export const fileUpload = async (file) => {
-  if (!file) throw new Error("no exixte un archivo");
+  /// if (!file) throw new Error("no exixte un archivo");
+
+  if (!file) return null;
   const cloudUrl = "https://api.cloudinary.com/v1_1/react-nicolas/upload";
 
   const formData = new FormData();
@@ -16,6 +18,7 @@ export const fileUpload = async (file) => {
 
     return cloudResp.secure_url;
   } catch (error) {
-    throw new Error(error.message);
+    //throw new Error(error.message);
+    return null;
   }
 };
