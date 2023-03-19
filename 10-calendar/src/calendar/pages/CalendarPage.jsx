@@ -6,6 +6,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { addHours } from "date-fns";
 import { localizer } from "../../helpers/calendarLocalizer";
 import { getMessagesES } from "../../helpers/getMessages";
+import { CalendarEvent } from "./components/CalendarEvent";
 
 const events = [
   {
@@ -22,9 +23,7 @@ const events = [
 ];
 
 export const CalendarPage = () => {
-  const eventStyleGetter = (event, stsart, end, isSelected) => {
-    console.log({ event, stsart, end, isSelected });
-
+  const eventStyleGetter = (event, start, end, isSelected) => {
     const style = {
       backgroundColor: "#347cf7",
       borderRadius: "0px",
@@ -48,6 +47,7 @@ export const CalendarPage = () => {
         style={{ height: 500 }}
         messages={getMessagesES()}
         eventPropGetter={eventStyleGetter}
+        components={{ event: CalendarEvent }}
       />
     </>
   );
