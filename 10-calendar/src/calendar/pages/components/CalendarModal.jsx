@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import es from "date-fns/locale/es";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
+import { useCalendarModal } from "../../../hooks/useCalendarModal";
 registerLocale("es", es);
 
 const customStyles = {
@@ -22,54 +23,15 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 export const CalendarModal = () => {
-  const [isOpen, setIsOpen] = useState(true);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formValue, setFormValue] = useState({
-    title: "nicolas",
-    notes: "jrx",
-    start: new Date(),
-    end: addHours(new Date(), 2),
-  });
-
-  const titleClas = useMemo(() => {
-    if (!formSubmitted) return "";
-
-    return formValue.title.length > 0 ? "" : "is-invalid";
-  }, [formValue.title, formSubmitted]);
-
-  const onInputChange = ({ target }) => {
-    setFormValue({
-      ...formValue,
-      [target.name]: target.value,
-    });
-  };
-
-  const onDateChanged = (event, changing) => {
-    setFormValue({
-      ...formValue,
-      [changing]: event,
-    });
-  };
-
-  const onCloseModal = () => {
-    setIsOpen(false);
-  };
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-    setFormSubmitted(true);
-
-    const diference = differenceInSeconds(formValue.end, formValue.start);
-
-    if (isNaN(diference) || diference <= 0)
-      return Swal.fire(
-        "fechas incorrentas",
-        "revisar las fechas seleccionadas",
-        "error"
-      );
-
-    if (formValue.title.length <= 0) return;
-  };
+  const {
+    isOpen,
+    formValue,
+    titleClas,
+    onInputChange,
+    onDateChanged,
+    onCloseModal,
+    onSubmit,
+  } = useCalendarModal();
 
   return (
     <Modal
