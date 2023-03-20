@@ -9,22 +9,11 @@ import { getMessagesES } from "../../helpers/getMessages";
 import { CalendarEvent } from "./components/CalendarEvent";
 import { CalendarModal } from "./components/CalendarModal";
 import { useIuStore } from "../../hooks/useUiStore";
-
-const events = [
-  {
-    title: "nota test",
-    notes: "prueba de nota",
-    start: new Date(),
-    end: addHours(new Date(), 2),
-    bgColor: "#fafafa",
-    user: {
-      _id: 123,
-      name: "nicolas",
-    },
-  },
-];
+import { useCalendarStore } from "../../hooks/useCalendarStore";
 
 export const CalendarPage = () => {
+  const { events } = useCalendarStore();
+
   const [lastView, setLastView] = useState(
     localStorage.getItem("lastView") || "week"
   );
