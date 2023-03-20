@@ -6,6 +6,7 @@ import es from "date-fns/locale/es";
 import "sweetalert2/dist/sweetalert2.min.css";
 import { useCalendarModal } from "../../../hooks/useCalendarModal";
 import { useIuStore } from "../../../hooks/useUiStore";
+import { useCalendarStore } from "../../../hooks/useCalendarStore";
 registerLocale("es", es);
 
 const customStyles = {

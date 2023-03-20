@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { addHours } from "date-fns";
 
 const tenoEvent = {
+  _id: "124125123",
   title: "nota test",
   notes: "prueba de nota",
   start: new Date(),
@@ -21,6 +22,9 @@ export const calendarSlice = createSlice({
   },
   reducers: {
     funtionName: (state /*,action */) => {},
+    onSetActiveEvent: (state, action) => {
+      state.activeEvent = action.payload;
+    },
   },
 });
-export const {} = calendarSlice.actions;
+export const { onSetActiveEvent } = calendarSlice.actions;

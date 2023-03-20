@@ -1,11 +1,14 @@
 import { addHours, differenceInSeconds } from "date-fns";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useCalendarStore } from "./useCalendarStore";
 
 export const useCalendarModal = () => {
+  const { activeEvent } = useCalendarStore();
+
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formValue, setFormValue] = useState({
-    title: "nicolas",
-    notes: "jrx",
+    title: "",
+    notes: "",
     start: new Date(),
     end: addHours(new Date(), 2),
   });
@@ -45,6 +48,12 @@ export const useCalendarModal = () => {
 
     if (formValue.title.length <= 0) return;
   };
+
+  useEffect(() => {
+    if (activeEvent !== null) {
+      setFormValue({ ...activeEvent });
+    }
+  }, [activeEvent]);
 
   return {
     formValue,
