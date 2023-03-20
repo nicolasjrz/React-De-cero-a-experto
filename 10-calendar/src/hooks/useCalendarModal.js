@@ -2,7 +2,6 @@ import { addHours, differenceInSeconds } from "date-fns";
 import { useMemo, useState } from "react";
 
 export const useCalendarModal = () => {
-  const [isOpen, setIsOpen] = useState(true);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formValue, setFormValue] = useState({
     title: "nicolas",
@@ -31,10 +30,6 @@ export const useCalendarModal = () => {
     });
   };
 
-  const onCloseModal = () => {
-    setIsOpen(false);
-  };
-
   const onSubmit = (event) => {
     event.preventDefault();
     setFormSubmitted(true);
@@ -52,12 +47,10 @@ export const useCalendarModal = () => {
   };
 
   return {
-    isOpen,
     formValue,
     titleClas,
     onInputChange,
     onDateChanged,
-    onCloseModal,
     onSubmit,
   };
 };

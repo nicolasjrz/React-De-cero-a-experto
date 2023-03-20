@@ -8,6 +8,7 @@ import { localizer } from "../../helpers/calendarLocalizer";
 import { getMessagesES } from "../../helpers/getMessages";
 import { CalendarEvent } from "./components/CalendarEvent";
 import { CalendarModal } from "./components/CalendarModal";
+import { useIuStore } from "../../hooks/useUiStore";
 
 const events = [
   {
@@ -39,8 +40,11 @@ export const CalendarPage = () => {
     return { style };
   };
 
+  const { openDateModal } = useIuStore();
+
   const onDoubleClick = (event) => {
     console.log({ doubleClick: event });
+    openDateModal();
   };
 
   const onSelect = (event) => {

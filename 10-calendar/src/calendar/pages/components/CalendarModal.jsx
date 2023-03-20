@@ -1,12 +1,11 @@
-import { addHours, differenceInSeconds } from "date-fns";
-import { useMemo, useState } from "react";
 import Modal from "react-modal";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import es from "date-fns/locale/es";
-import Swal from "sweetalert2";
+
 import "sweetalert2/dist/sweetalert2.min.css";
 import { useCalendarModal } from "../../../hooks/useCalendarModal";
+import { useIuStore } from "../../../hooks/useUiStore";
 registerLocale("es", es);
 
 const customStyles = {
@@ -23,20 +22,15 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 export const CalendarModal = () => {
-  const {
-    isOpen,
-    formValue,
-    titleClas,
-    onInputChange,
-    onDateChanged,
-    onCloseModal,
-    onSubmit,
-  } = useCalendarModal();
+  const { formValue, titleClas, onInputChange, onDateChanged, onSubmit } =
+    useCalendarModal();
+
+  const { isDateModalOpen, closeDateModal } = useIuStore();
 
   return (
     <Modal
-      isOpen={isOpen}
-      onRequestClose={onCloseModal}
+      isOpen={isDateModalOpen}
+      onRequestClose={closeDateModal}
       style={customStyles}
       className="modal"
       overlayClassName="modal-fondo"
