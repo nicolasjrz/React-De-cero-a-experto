@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   onAddNewEvent,
   onSetActiveEvent,
+  onUpdateEvenet,
 } from "../store/calendar/calendarSlice";
 
 export const useCalendarStore = () => {
@@ -15,6 +16,7 @@ export const useCalendarStore = () => {
 
   const startSavingEvent = async (calendarEvent) => {
     if (calendarEvent._id) {
+      dispatch(onUpdateEvenet({ ...calendarEvent }));
     } else {
       dispatch(onAddNewEvent({ ...calendarEvent, _id: new Date().getTime() }));
     }
