@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "../components/Navbar";
 import { Calendar } from "react-big-calendar";
-import "react-big-calendar/lib/css/react-big-calendar.css";
 
-import { addHours } from "date-fns";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 import { localizer } from "../../helpers/calendarLocalizer";
 import { getMessagesES } from "../../helpers/getMessages";
-import { CalendarEvent } from "./components/CalendarEvent";
-import { CalendarModal } from "./components/CalendarModal";
+import { CalendarEvent } from "../components/CalendarEvent";
+import { CalendarModal } from "../components/CalendarModal";
 import { useIuStore } from "../../hooks/useUiStore";
 import { useCalendarStore } from "../../hooks/useCalendarStore";
-import { FabAddNew } from "./components/FabAddNew";
+import { FabAddNew } from "../components/FabAddNew";
 
 export const CalendarPage = () => {
   const { events, setActiveEvent } = useCalendarStore();
