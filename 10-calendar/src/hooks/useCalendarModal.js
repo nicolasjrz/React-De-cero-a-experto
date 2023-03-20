@@ -1,10 +1,11 @@
 import { addHours, differenceInSeconds } from "date-fns";
 import { useEffect, useMemo, useState } from "react";
 import { useCalendarStore } from "./useCalendarStore";
+import { useIuStore } from "./useUiStore";
 
 export const useCalendarModal = () => {
-  const { activeEvent } = useCalendarStore();
-
+  const { activeEvent, startSavingEvent } = useCalendarStore();
+  const { closeDateModal } = useIuStore();
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formValue, setFormValue] = useState({
     title: "",
@@ -33,7 +34,7 @@ export const useCalendarModal = () => {
     });
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
     setFormSubmitted(true);
 
@@ -47,6 +48,10 @@ export const useCalendarModal = () => {
       );
 
     if (formValue.title.length <= 0) return;
+
+    await startSavingEvent(formValue);
+    closeDateModal();
+    setFormSubmitted(false);
   };
 
   useEffect(() => {
