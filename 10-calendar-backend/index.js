@@ -12,10 +12,7 @@ const app = express();
 
 app.use(express.static("public"));
 
-// app.get("/", (req, res) => {
-//   console.log("se requiere el /");
-//   res.json({ ok: true });
-// });
+app.use("/api/auth", require("./routes/auth"));
 
 /// escuchar peticion
 app.listen(process.env.PORT, () => {
