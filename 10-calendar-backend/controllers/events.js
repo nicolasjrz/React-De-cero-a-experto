@@ -78,13 +78,31 @@ const uploadEvent = async (req, res = response) => {
   }
 };
 
-const deleteEvent = (req, res = response) => {
-  res.status(200).json({
-    ok: true,
-    msg: "evento eliminado correctamente",
-  });
-
+const deleteEvent = async (req, res = response) => {
+  const eventID = req.params.id;
+  const uid = req.uid;
   try {
+    const evento = await Event.findById(eventID);
+
+    if (!evento)
+      return res.status(404).json({
+        ok: false,
+        msg: "evento no existe por ese id",
+      });
+
+    if (evento.user.toString() !== uid) {
+      return res.status(401).json({
+        ok: false,
+        msg: "no tiene permisos para editar el evento",
+      });
+    }
+
+    await Event.findByIdAndDelete(eventID);
+
+    res.status(200).json({
+      ok: true,
+      msg: "evento eliminado correctamente",
+    });
   } catch (error) {
     return res.status(200).json({
       ok: false,
