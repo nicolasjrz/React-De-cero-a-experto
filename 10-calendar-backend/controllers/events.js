@@ -1,8 +1,9 @@
 const { response } = require("express");
 
 const newEvent = (req, res = response) => {
+  console.log(req.body);
   try {
-    res.status(200).json({
+    res.json({
       ok: true,
       msg: "creado correctamente",
     });
