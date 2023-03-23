@@ -7,6 +7,12 @@ const {
 } = require("../controllers/events");
 const router = express.Router();
 
+/**
+ *
+ * Events routes
+ * /api/event
+ */
+
 router.get("/", getEvents);
 
 router.post("/", newEvent);
