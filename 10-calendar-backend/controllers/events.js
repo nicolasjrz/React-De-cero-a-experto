@@ -1,14 +1,18 @@
 const { response } = require("express");
 
-const newEvent = (req, res = response) => {
-  console.log(req.body);
+const Event = require("../models/Event");
+
+const newEvent = async (req, res = response) => {
+  const evento = new Event(req.body);
+
   try {
-    res.json({
-      ok: true,
-      msg: "creado correctamente",
-    });
+    evento.user = req.uid;
+    const eventSave = await evento.save();
+
+    res.status(201).json({ ok: true, evento: eventSave });
   } catch (error) {
-    return res.status(200).json({
+    console.log(error);
+    return res.status(500).json({
       ok: false,
       msg: "error en crear evento",
     });
@@ -22,7 +26,7 @@ const getEvents = (req, res = response) => {
       msg: "eventos cargados  correctamente",
     });
   } catch (error) {
-    return res.status(200).json({
+    return res.status(500).json({
       ok: false,
       msg: "error en mostrar eventos",
     });
@@ -36,7 +40,7 @@ const uploadEvent = (req, res = response) => {
       msg: " evento actualizado correctamente",
     });
   } catch (error) {
-    return res.status(200).json({
+    return res.status(500).json({
       ok: false,
       msg: "error en actualizar evento",
     });
