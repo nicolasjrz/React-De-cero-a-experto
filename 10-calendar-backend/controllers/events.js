@@ -1,4 +1,5 @@
 const { response } = require("express");
+const { populate } = require("../models/Event");
 
 const Event = require("../models/Event");
 
@@ -19,11 +20,13 @@ const newEvent = async (req, res = response) => {
   }
 };
 
-const getEvents = (req, res = response) => {
+const getEvents = async (req, res = response) => {
+  const eventos = await Event.find().populate("user", "name");
   try {
     res.status(200).json({
       ok: true,
       msg: "eventos cargados  correctamente",
+      eventos: eventos,
     });
   } catch (error) {
     return res.status(500).json({
