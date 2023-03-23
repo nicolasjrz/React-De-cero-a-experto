@@ -5,7 +5,10 @@ const {
   uploadEvent,
   deleteEvent,
 } = require("../controllers/events");
+const { validarJWT } = require("../middlewares/validar-jwt");
 const router = express.Router();
+
+router.use(validarJWT);
 
 /**
  *
