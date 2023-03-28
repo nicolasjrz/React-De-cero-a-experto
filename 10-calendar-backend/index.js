@@ -31,6 +31,12 @@ app.use("/api/event", require("./routes/events"));
 app.use(express.static("public"));
 
 /// escuchar peticion
-app.listen(process.env.PORT, () => {
-  console.log(`servidor corriendo en el puerto ${process.env.PORT}`);
-});
+// app.listen(process.env.PORT, () => {
+//   console.log(`servidor corriendo en el puerto ${process.env.PORT}`);
+// });
+
+const port = process.env.PORT || 4000;
+
+app.listen(port);
+
+console.log("App listen on Port " + port);
