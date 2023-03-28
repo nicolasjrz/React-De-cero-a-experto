@@ -5,7 +5,7 @@ import { CalendarPage } from "../calendar/pages/CalendarPage";
 import { getEnvVariable } from "../helpers/getEnvVariable";
 
 export const AppRouter = () => {
-  const auhtStatus = "auth";
+  const auhtStatus = "not-auth";
 
   return (
     <Routes>
