@@ -1,5 +1,5 @@
 const express = require("express");
-const { dbConnection } = require("../database/config");
+const { dbConnection } = require("./database/config");
 
 const cors = require("cors");
 //require("dotenv").config({ path: "./config.env" });
@@ -23,9 +23,9 @@ app.use(express.json());
 
 //rutas
 
-app.use("/api/auth", require("../routes/auth"));
+app.use("/api/auth", require("./routes/auth"));
 
-app.use("/api/event", require("../routes/events"));
+app.use("/api/event", require("./routes/events"));
 
 /// directorio publicoPORT=4000
 app.use(express.static("public"));
@@ -39,4 +39,4 @@ const port = process.env.PORT || 4000;
 
 app.listen(port);
 
-console.log("App listen on Port  SRC " + port);
+console.log("App listen on Port   " + port);
