@@ -16,6 +16,8 @@ const registerFormFields = {
   registerPassword2: "",
 };
 export const LoginPage = () => {
+  const { startLogin, startRegister, errorMessage } = useAuthStore();
+
   const {
     loginEmail,
     loginPassword,
@@ -38,15 +40,17 @@ export const LoginPage = () => {
   const registerSubmit = (event) => {
     event.preventDefault();
 
-    console.log({
-      registerName,
-      registerEmail,
-      registerPassword,
-      registerPassword2,
+    if (registerPassword !== registerPassword2) {
+      Swal.fire("Las contracenias no son iguales", "error");
+      return;
+    }
+
+    startRegister({
+      name: registerName,
+      email: registerEmail,
+      password: registerPassword,
     });
   };
-
-  const { startLogin, errorMessage } = useAuthStore();
 
   useEffect(() => {
     if (errorMessage !== undefined) {
