@@ -48,8 +48,6 @@ export const useAuthStore = () => {
       setTimeout(() => {
         dispatch(clearErrorMsg());
       }, 10);
-
-      console.log(error);
     }
   };
 
