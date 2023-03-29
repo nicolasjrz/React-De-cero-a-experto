@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // const tenoEvent = {
-//   _id: "124125123",
+//   id: "124125123",
 //   title: "nota test",
 //   notes: "prueba de nota",
 //   start: new Date(),
 //   end: addHours(new Date(), 2),
 //   bgColor: "#fafafa",
 //   user: {
-//     _id: 123,
+//     id: 123,
 //     name: "nicolas",
 //   },
 // };
@@ -31,7 +31,7 @@ export const calendarSlice = createSlice({
     },
     onUpdateEvenet: (state, { payload }) => {
       state.events = state.events.map((event) => {
-        if (event._id === payload._id) {
+        if (event.id === payload.id) {
           return payload;
         }
         return event;
@@ -40,7 +40,7 @@ export const calendarSlice = createSlice({
     onDeleteEvent: (state) => {
       if (state.activeEvent) {
         state.events = state.events.filter((event) => {
-          event._id !== state.activeEvent._id;
+          event.id !== state.activeEvent.id;
         });
         state.activeEvent = null;
       }
