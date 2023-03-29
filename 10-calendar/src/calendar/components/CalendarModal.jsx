@@ -23,7 +23,7 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 export const CalendarModal = () => {
-  const { formValue, titleClas, onInputChange, onDateChanged, onSubmit } =
+  const { formValue, titleClass, onInputChange, onDateChanged, onSubmit } =
     useCalendarModal();
 
   const { isDateModalOpen, closeDateModal } = useIuStore();
@@ -72,7 +72,7 @@ export const CalendarModal = () => {
           <label>Titulo y notas</label>
           <input
             type="text"
-            className={`form-control ${titleClas}`}
+            className={`form-control ${titleClass}`}
             placeholder="Título del evento"
             name="title"
             autoComplete="off"

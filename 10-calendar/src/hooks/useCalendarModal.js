@@ -14,7 +14,7 @@ export const useCalendarModal = () => {
     end: addHours(new Date(), 2),
   });
 
-  const titleClas = useMemo(() => {
+  const titleClass = useMemo(() => {
     if (!formSubmitted) return "";
 
     return formValue.title.length > 0 ? "" : "is-invalid";
@@ -62,7 +62,7 @@ export const useCalendarModal = () => {
 
   return {
     formValue,
-    titleClas,
+    titleClass,
     onInputChange,
     onDateChanged,
     onSubmit,
