@@ -8,7 +8,6 @@ export const authSlice = createSlice({
     errorMessage: undefined,
   },
   reducers: {
-    funtionName: (state /*,action */) => {},
     onChecking: (state) => {
       state.status = "checking";
       state.user = {};
