@@ -6,7 +6,7 @@ import {
   onLogoutCalendar,
   onSetActiveEvent,
   onUpdateEvenet,
-} from "../../../store/calendar/calendarSlice";
+} from "../../../src/store/calendar/calendarSlice";
 import {
   calendarWithActiveEventState,
   calendarWithEventsState,

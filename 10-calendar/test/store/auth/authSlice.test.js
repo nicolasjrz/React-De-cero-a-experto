@@ -4,7 +4,7 @@ import {
   onChecking,
   onLogin,
   onLogout,
-} from "../../../store/auth/authSlice";
+} from "../../../src/store/auth/authSlice";
 import { authenticatedState, initialState } from "../__fixtures/authStates";
 import { testUserCredentials } from "../__fixtures/testUser";
 

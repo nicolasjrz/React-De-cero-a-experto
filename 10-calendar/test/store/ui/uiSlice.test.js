@@ -2,7 +2,7 @@ import {
   onCloseDateModal,
   onOpenDateModal,
   uiSlice,
-} from "../../../store/iu/uiSlice";
+} from "../../../src/store/iu/uiSlice";
 
 describe("Pruebas en uiSlice", () => {
   test("debe de regresar el estado por defecto", () => {
