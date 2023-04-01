@@ -3,6 +3,7 @@ export const getEnvVariable = () => {
 
   return {
     ///...import.meta.env,
+    VITE_MODE: import.meta.env.VITE.MODE,
     VITE_API_URL: import.meta.env.VITE_API_URL,
   };
 };

@@ -7,6 +7,7 @@ import "sweetalert2/dist/sweetalert2.min.css";
 import { useCalendarModal } from "../../hooks/useCalendarModal";
 import { useIuStore } from "../../hooks/useUiStore";
 import { useCalendarStore } from "../../hooks/useCalendarStore";
+import { getEnvVariable } from "../../helpers/getEnvVariable";
 registerLocale("es", es);
 
 const customStyles = {
@@ -19,8 +20,9 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
   },
 };
-
-Modal.setAppElement("#root");
+if (getEnvVariable().VITE_MODE !== "test") {
+  Modal.setAppElement("#root");
+}
 
 export const CalendarModal = () => {
   const { formValue, titleClass, onInputChange, onDateChanged, onSubmit } =
